@@ -1,5 +1,5 @@
 # Practica 3 Pilas (Stacks)
-## Estructuras de datos 
+Estructuras de datos 
 
 --- 
 ## Stack con nodos
@@ -18,5 +18,6 @@ Se implementaron pilas con nodos en lugar de Arraylist.
 - **Asteroide**: Se hizo la implementacion del juego asteroide el cual, simula las colisiones de asteroides y devuelve los sobreviviente. 
 - **HTML Balanceo**: Verifica si las etiquetas de HTML estan correctamente balanceadas, es decir si abres una etiqueta este cerrada y si estan correctamente anidadas.
 
+---
 
-
+- **Alumno**: Trejo Garcia Ozkar Mauricio
