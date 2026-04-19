@@ -1,54 +1,80 @@
-import java.util.ArrayList;
 import java.util.EmptyStackException;
-import java.util.Iterator;
 
 /**
- * Implementación de una pila usando listas
- * @author Yanahi
- * @version 10 de marzo 2026
+ * Implementacion de una pila usando nodos
+ * @author Ozkar Trejo
+ * @version 2026-2
  */
 public class Stack<T> implements TDAStack<T>{
 
-  /*Lista auxiliar para las operacioens */
-  private ArrayList<T> lista = new ArrayList<>();
+  /** Referencia al nodo en el tope de la pila */
+  private Nodo<T> tope;
+  
+  /** Tamaño de la pila */
+  private int tamanio;
+
+  /**
+   * Constructor que crea una pila vacía
+   */
+  public Stack() {
+    this.tope = null;
+    this.tamanio = 0;
+  }
 
   @Override
   public void push(T e){
-    lista.add(0,e);
+
+    Nodo<T> nuevoNodo = new Nodo<>(e);
+    nuevoNodo.asignarSiguiente(tope);
+    tope = nuevoNodo;
+    tamanio++;
   }
 
   @Override
   public T pop() throws EmptyStackException{
-    if(lista.isEmpty()){
+    if(isEmpty()){
       throw new EmptyStackException();
     }
-    return lista.remove(0);
+    T elemento = tope.obtenerElemento();
+    tope = tope.obtenerSiguiente();
+    tamanio--;
+    return elemento;
   }
 
   @Override
   public T top() throws EmptyStackException{
-    if(lista.isEmpty()){
+    if(isEmpty()){
       throw new EmptyStackException();
     }
-    return lista.get(0);
+    return tope.obtenerElemento();
   }
 
   @Override
   public boolean isEmpty(){
-    return lista.isEmpty();
+    return tope == null;
   }
 
   @Override
   public void clear(){
-    lista.clear();
+    tope = null;
+    tamanio = 0;
   }
 
   @Override
   public void show(){
-    Iterator<T> iterator =  lista.iterator();
-    while(iterator.hasNext()){
-      System.out.println(iterator.next());
+    Nodo<T> actual = tope;
+    while(actual != null){
+      System.out.println(actual.obtenerElemento());
+      actual = actual.obtenerSiguiente();
     }
+  }
+  
+  /**
+   * Obtiene el tamaño de la pila
+   * @return el número de elementos en la pila
+   */
+  public int size() {
+    return tamanio;
   }
 
 }
